@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+:root {
+  --nav-color: #eee;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+nav {
+  width: 100%;
+  padding: 1em;
+  background: var(--nav-color);
+}
+nav .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
