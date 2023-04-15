@@ -146,6 +146,10 @@ Style/SymbolArray:
 Layout/LineLength:
   Max: 198
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 AllCops:
   NewCops: enable
   SuggestExtensions: false
