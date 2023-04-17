@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:index, :show]
+
+  def index
+    @articles = Article.all
+  end
 
   def show
     @article = Article.with_attached_cover_image.find(params[:id])

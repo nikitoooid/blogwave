@@ -7,7 +7,7 @@ Blog app with API
 * Rails 7.0.4.3
 
 To ensure proper display of embedded images in articles, you need to install libvips using the following commands:
-~~
+```
 sudo apt-get update
 sudo apt-get install libvips
-~~
+```

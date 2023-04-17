@@ -1,7 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe "Articles", type: :request do
-  describe "GET /index" do
+  describe "GET /articles" do
+    it "renders index view" do
+      user = create(:user)
+      create_list(:article, 3, user: user)
+
+      get articles_path
+      expect(response).to render_template :index
+    end
+
+    it 'returns http success' do
+      user = create(:user)
+      create_list(:article, 3, user: user)
+
+      get articles_path
+      expect(response).to have_http_status :success
+    end
   end
 
   describe "GET /articles/new" do
