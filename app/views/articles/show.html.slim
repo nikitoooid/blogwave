@@ -1,0 +1,16 @@
+article
+  section
+    div.container
+      h1 = @article.title
+      - if @article.cover_image.attached?
+        div class="cover-image"
+          = image_tag @article.cover_image
+
+  section
+    div.container
+      div
+        = @article.content
+
+      - if current_user&.author_of? @article
+        hr
+        = link_to 'Edit article', edit_article_path(@article)

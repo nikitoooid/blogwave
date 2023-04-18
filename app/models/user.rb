@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
 
   validates :name, presence: true
+
+  def author_of?(object)
+    self.id == object.user.id
+  end
 end
