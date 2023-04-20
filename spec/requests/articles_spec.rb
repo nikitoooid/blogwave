@@ -57,7 +57,7 @@ RSpec.describe "Articles", type: :request do
 
   describe "GET /articles/:id/edit" do
     context 'when user is an author' do
-      it "renders edit article view" do
+      it 'renders edit article view' do
         user = create(:user)
         article = create(:article, user: user)
         sign_in(user)
@@ -77,14 +77,14 @@ RSpec.describe "Articles", type: :request do
     end
 
     context 'when user is not an author' do
-      it "renders edit article view" do
+      it 'redirects to article page' do
         user = create(:user)
         another_user = create(:user)
         article = create(:article, user: another_user)
         sign_in(user)
 
         get edit_article_path(article)
-        expect(response).to_not render_template :edit
+        expect(response).to redirect_to(article)
       end
 
       it 'returns http success' do
@@ -213,6 +213,52 @@ RSpec.describe "Articles", type: :request do
 
         put article_path(article), params: { article: { title: 'New title' } }
         expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  describe 'DELETE /articles/:id' do
+    context 'when user is an author' do
+      it 'deletes article' do
+        user = create(:user)
+        article = create(:article, user: user)
+
+        sign_in(user)
+
+        expect { delete article_path(article) }.to change(Article, :count).by(-1)
+      end
+
+      it 'redirects to index page' do
+        user = create(:user)
+        article = create(:article, user: user)
+
+        sign_in(user)
+        delete article_path(article)
+
+        expect(response).to redirect_to(articles_path)
+      end
+    end
+
+    context 'when user is not an author' do
+      it "doesn't delete the article" do
+        user = create(:user)
+        another_user = create(:user)
+        article = create(:article, user: another_user)
+
+        sign_in(user)
+
+        expect { delete article_path(article) }.to_not change(Article, :count)
+      end
+
+      it 'redirects to article page' do
+        user = create(:user)
+        another_user = create(:user)
+        article = create(:article, user: another_user)
+
+        sign_in(user)
+        delete article_path(article)
+
+        expect(response).to redirect_to(article_path(article))
       end
     end
   end

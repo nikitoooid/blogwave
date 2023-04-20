@@ -1,4 +1,6 @@
 div.container
   h1 Edit article
+  - if current_user&.author_of?(@article)
+    = link_to 'Delete article', @article, data: { turbo_method: :delete }
 
   = render partial: 'form', locals: { submit_text: 'Save changes' }

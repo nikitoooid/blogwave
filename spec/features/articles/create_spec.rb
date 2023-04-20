@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe 'User can add an article', "
+describe 'User can create an article', "
   In order to share my thoughts
   As an authenticated user
-  I'd like to be able to add an article
+  I'd like to be able to create an article
 " do
-  describe 'Authenticated user tries to add an article' do
+  describe 'Authenticated user tries to create an article' do
     it 'with valid params' do
       user = create(:user)
       sign_in(user)
@@ -32,7 +32,7 @@ describe 'User can add an article', "
     end
   end
 
-  it 'Unauthenticated user tries to add an article' do
+  it 'Unauthenticated user tries to create an article' do
     visit new_article_path
 
     expect(page).to have_content 'You need to sign in or sign up before continuing.'

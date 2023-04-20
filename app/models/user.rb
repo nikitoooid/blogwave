@@ -9,6 +9,6 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   def author_of?(object)
-    self.id == object.user.id
+    id == object.user.id
   end
 end
