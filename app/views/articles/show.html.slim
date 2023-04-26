@@ -13,4 +13,4 @@ article
 
       - if current_user&.author_of? @article
         hr
-        = link_to 'Edit article', edit_article_path(@article)
+        = link_to t('.edit'), edit_article_path(@article)

@@ -14,7 +14,7 @@ I'd like to be able to delete an article
       visit edit_article_path(article)
       click_on 'Delete article'
 
-      expect(page).to have_content('Article deleted.')
+      expect(page).to have_content(I18n.t('articles.destroy.success'))
     end
 
     it "tries to delete someone else's article" do
@@ -25,7 +25,7 @@ I'd like to be able to delete an article
       sign_in(user)
       visit edit_article_path(article)
 
-      expect(page).to have_content('You are not authorized to perform this action.')
+      expect(page).to have_content(I18n.t('articles.failure.no_rights'))
     end
   end
 
@@ -35,7 +35,7 @@ I'd like to be able to delete an article
 
     visit edit_article_path(article)
 
-    expect(page).to have_content('You need to sign in or sign up before continuing.')
-    expect(page).to_not have_content('Delete article')
+    expect(page).to have_content(I18n.t('devise.failure.unauthenticated'))
+    expect(page).to_not have_content(I18n.t('articles.edit.delete'))
   end
 end

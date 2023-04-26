@@ -1,2 +1,25 @@
 en:
+  articles:
+    failure:
+      no_rights: 'You are not authorized to perform this action.'
+    index:
+      title:   'Articles'
+    show:
+      edit:    'Edit article'
+    new:
+      title:   'New article'
+      save:    'Create Article'
+    create:
+      success: 'Article was successfully created.'
+      error:   'Article is not created!'
+    edit:
+      title:   'Edit article'
+      delete:  'Delete article'
+      save:    'Save changes'
+    update:
+      success: 'Article was successfully saved.'
+      error:   'Article is not saved!'
+    destroy:
+      success: 'Article was successfully deleted.'
+      error:   'Article is not deleted!'
   

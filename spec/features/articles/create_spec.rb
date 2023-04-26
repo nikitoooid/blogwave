@@ -13,9 +13,9 @@ describe 'User can create an article', "
       visit new_article_path
       fill_in 'article[title]', with: 'My First Article'
       attach_file 'article[cover_image]', Rails.public_path.join('apple-touch-icon.png')
-      click_button 'Create Article'
+      click_button I18n.t('articles.new.save')
 
-      expect(page).to have_content 'Article was successfully created.'
+      expect(page).to have_content I18n.t('articles.create.success')
       expect(page).to have_content 'My First Article'
       expect(page).to have_css '.cover-image'
     end
@@ -25,9 +25,9 @@ describe 'User can create an article', "
       sign_in(user)
 
       visit new_article_path
-      click_button 'Create Article'
+      click_button I18n.t('articles.new.save')
 
-      expect(page).to have_content 'Article is not created!'
+      expect(page).to have_content I18n.t('articles.create.error')
       expect(page).to_not have_css '.cover-image'
     end
   end
@@ -35,6 +35,6 @@ describe 'User can create an article', "
   it 'Unauthenticated user tries to create an article' do
     visit new_article_path
 
-    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    expect(page).to have_content I18n.t('devise.failure.unauthenticated')
   end
 end

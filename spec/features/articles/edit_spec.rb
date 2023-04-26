@@ -14,7 +14,7 @@ describe 'User can edit articles', "
       visit edit_article_path(article)
 
       fill_in 'article[title]', with: 'This is new title'
-      click_button 'Save changes'
+      click_button I18n.t('articles.edit.save')
 
       expect(page).to have_content('This is new title')
     end
@@ -27,7 +27,7 @@ describe 'User can edit articles', "
       sign_in(user)
       visit edit_article_path(article)
 
-      expect(page).to have_content('You are not authorized to perform this action.')
+      expect(page).to have_content(I18n.t('articles.failure.no_rights'))
     end
   end
 
@@ -37,6 +37,6 @@ describe 'User can edit articles', "
 
     visit edit_article_path(article)
 
-    expect(page).to have_content('You need to sign in or sign up before continuing.')
+    expect(page).to have_content(I18n.t('devise.failure.unauthenticated'))
   end
 end

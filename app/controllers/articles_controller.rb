@@ -19,27 +19,27 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.new(article_params)
 
     if @article.save
-      redirect_to article_path(@article), notice: 'Article was successfully created.'
+      redirect_to article_path(@article), notice: t('.success')
     else
-      flash.now[:alert] = 'Article is not created!'
+      flash.now[:alert] = t('.error')
       render :new
     end
   end
 
   def update
     if @article.update(article_params)
-      redirect_to @article, notice: 'Article was successfully edited.'
+      redirect_to @article, notice: t('.success')
     else
-      flash.now[:alert] = 'Article is not edited!'
+      flash.now[:alert] = t('.error')
       render :edit
     end
   end
 
   def destroy
     if @article.destroy
-      redirect_to articles_path, notice: 'Article deleted.'
+      redirect_to articles_path, notice: t('.success')
     else
-      redirect_to @article, alert: 'Article is not deleted.'
+      redirect_to @article, alert: t('.error')
     end
   end
 
@@ -58,7 +58,6 @@ class ArticlesController < ApplicationController
   def authorize_author!
     return if current_user&.author_of?(@article)
 
-    flash[:alert] = "You are not authorized to perform this action."
-    redirect_to @article
+    redirect_to @article, alert: t('articles.failure.no_rights')
   end
 end
