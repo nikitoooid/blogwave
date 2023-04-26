@@ -1,0 +1,15 @@
+= form_with model: @article do |f|
+  div.group
+    div = f.label :title
+    div = f.text_field :title
+
+  div.group
+    div = f.label :cover_image
+    div = f.file_field :cover_image
+
+  div.group
+    div = f.label :content
+    div = f.rich_text_area :content
+
+  div.group
+    = f.submit submit_text

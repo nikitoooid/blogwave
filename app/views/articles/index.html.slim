@@ -1,0 +1,10 @@
+section
+  div.container
+    h1 = t('.title')
+    
+    - if user_signed_in?
+      = link_to t('.new'), new_article_path
+
+section.articles
+  div.container
+    = render @articles

@@ -16,6 +16,10 @@
 
 :root {
   --nav-color: #eee;
+  --notice-color: #ffffff;
+  --alert-color: #ffffff;
+  --notice-bg: #bbb;
+  --alert-bg: #f07171;
 }
 
 .container {
@@ -28,7 +32,28 @@ nav {
   padding: 1em;
   background: var(--nav-color);
 }
+
 nav .wrapper {
   display: flex;
   justify-content: space-between;
+}
+
+.flash {
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.notice {
+  color: var(--notice-color);
+  background: var(--notice-bg);
+}
+
+.alert {
+  color: var(--alert-color);
+  background: var(--alert-bg);
+}
+
+form .group {
+  margin-bottom: 15px;
 }
