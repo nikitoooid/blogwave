@@ -4,6 +4,7 @@ en:
       no_rights: 'You are not authorized to perform this action.'
     index:
       title:   'Articles'
+      new:     'Create article'
     show:
       edit:    'Edit article'
     new:
